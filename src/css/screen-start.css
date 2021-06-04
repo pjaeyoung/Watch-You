@@ -26,9 +26,3 @@
   position: absolute;
   clip: rect(0 150px 300px 0);
 }
-
-.btn-start {
-  background-color: #fff;
-  width: 100px;
-  height: 30px;
-}
