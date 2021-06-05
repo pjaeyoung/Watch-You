@@ -12,11 +12,11 @@
       <div id="screen-start" class="screen">
         <header>Watch You</header>
         <figure>
-          <img src="./assets/char_front.png" alt="캐릭터 얼굴" />
+          <img src="./assets/images/char_front.png" alt="캐릭터 얼굴" />
         </figure>
         <button id="btn-start">Start</button>
       </div>
-      <div id="screen-game-1" class="screen active">
+      <div id="screen-game-1" class="screen">
         <svg
           id="traffic-light"
           class="turn-on-red"
@@ -47,7 +47,23 @@
         <div id="directive">건너편으로 건너가세요.</div>
         <div id="char"></div>
       </div>
-      <div id="screen-game-2" class="screen"></div>
+      <div id="screen-game-2" class="screen active">
+        <div class="cd-players">
+          <figure class="cd-player">
+            <img class="pull-line" src="assets/images/pull_line.svg" />
+            <img style="--i: 1" src="assets/images/cd player.svg" />
+            <img style="--i: 0.6" src="assets/images/cd_calm.svg" />
+          </figure>
+          <figure class="cd-player">
+            <img class="pull-line" src="assets/images/pull_line.svg" />
+            <img style="--i: 1" src="assets/images/cd player.svg" />
+            <img style="--i: 0.6" src="assets/images/cd_creepy.svg" />
+          </figure>
+        </div>
+        <div id="naon-wrapper">
+          <span id="naon-text">Play<br />Music</span>
+        </div>
+      </div>
       <div id="screen-game-3" class="screen"></div>
       <div id="screen-game-end" class="screen"></div>
     </div>
