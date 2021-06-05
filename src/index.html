@@ -9,8 +9,8 @@
   </head>
   <body>
     <div id="app">
-      <div id="screen-start" class="screen active">
-        <header>Watch You</header>
+      <div id="screen-start" class="screen">
+        <div>Watch You</div>
         <figure>
           <img src="./assets/images/character.svg" alt="캐릭터 얼굴" />
         </figure>
@@ -44,7 +44,7 @@
             <div style="--i: 8" class="white-line"></div>
           </div>
         </div>
-        <div id="directive">건너편으로 건너가세요.</div>
+        <div class="directive">건너편으로 건너가세요.</div>
         <div id="char"></div>
       </div>
       <div id="screen-game-2" class="screen">
@@ -64,7 +64,30 @@
           <span id="naon-text">Play<br />Music</span>
         </div>
       </div>
-      <div id="screen-game-3" class="screen"></div>
+      <div id="screen-game-3" class="screen active">
+        <div class="directive">Q 를 눌러 상호작용하세요.</div>
+        <figure style="--h: 1; --v: 1" class="cloud">
+          <img src="assets/images/cloud.svg" alt="cloud" />
+        </figure>
+        <figure style="--h: 1.2; --v: 4.5" class="cloud">
+          <img src="assets/images/cloud.svg" alt="cloud" />
+        </figure>
+        <div id="floor"></div>
+        <figure id="drain">
+          <img src="assets/images/drain.svg" alt="drain" />
+        </figure>
+        <figure id="bricks">
+          <img src="assets/images/bricks.svg" alt="basic bricks" />
+          <img
+            id="riddle-brick"
+            src="assets/images/riddle-brick.svg"
+            alt="riddle brick"
+          />
+        </figure>
+        <figure id="flag-pole">
+          <img src="assets/images/flag_pole.svg" alt="flag pole" />
+        </figure>
+      </div>
       <div id="screen-end" class="screen">
         <header>
           <h1>당신의 행동을<br />분석하다</h1>

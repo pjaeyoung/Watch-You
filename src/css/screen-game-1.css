@@ -43,14 +43,6 @@
   background-color: #fff;
 }
 
-#directive {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
+#screen-game-1 .directive {
   bottom: 2%;
-  color: gray;
-  -webkit-transform: translate(-50%);
-  -moz-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  -o-transform: translate(-50%);
 }

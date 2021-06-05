@@ -1,6 +1,7 @@
 @import url("./screen-start.css");
 @import url("./screen-game-1.css");
 @import url("./screen-game-2.css");
+@import url("./screen-game-3.css");
 @import url("./screen-end.css");
 
 * {
@@ -41,4 +42,11 @@ button {
 
 .screen.active {
   opacity: 1;
+}
+
+.directive {
+  position: absolute;
+  color: gray;
+  width: 100%;
+  text-align: center;
 }
