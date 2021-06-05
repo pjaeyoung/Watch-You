@@ -1,0 +1,56 @@
+#driveway {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 150px;
+  background-color: black;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+#traffic-light {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  width: 50px;
+  height: 100px;
+}
+
+#traffic-light.turn-on-red #red-light {
+  fill: red;
+}
+
+#traffic-light.turn-on-green #green-light {
+  fill: green;
+}
+
+#crosswalk {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 50px;
+  height: 100%;
+}
+
+#crosswalk .white-line {
+  width: 100%;
+  height: 10px;
+  background-color: #fff;
+}
+
+#directive {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 2%;
+  color: gray;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+}

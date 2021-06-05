@@ -9,18 +9,48 @@
   </head>
   <body>
     <div id="app">
-      <div id="screen-start" class="screen active">
+      <div id="screen-start" class="screen">
         <header>Watch You</header>
         <figure>
           <img src="./assets/char_front.png" alt="캐릭터 얼굴" />
         </figure>
-        <button class="btn-start">Start</button>
+        <button id="btn-start">Start</button>
       </div>
-      <div id="screen-game-one" class="screen"></div>
-      <div id="screen-game-two" class="screen"></div>
-      <div id="screen-game-three" class="screen"></div>
+      <div id="screen-game-1" class="screen active">
+        <svg
+          id="traffic-light"
+          class="turn-on-red"
+          width="184"
+          height="1001"
+          viewBox="0 0 184 1001"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="184" height="377" rx="92" fill="#C4C4C4" />
+          <rect x="8" y="6" width="167" height="365" rx="83.5" fill="black" />
+          <circle id="red-light" cx="92" cy="100" r="72" fill="#C4C4C4" />
+          <circle id="green-light" cx="92" cy="273" r="72" fill="#C4C4C4" />
+          <rect x="74" y="377" width="35" height="624" fill="#C4C4C4" />
+        </svg>
+        <div id="driveway">
+          <div id="crosswalk">
+            <div style="--i: 1" class="white-line"></div>
+            <div style="--i: 2" class="white-line"></div>
+            <div style="--i: 3" class="white-line"></div>
+            <div style="--i: 4" class="white-line"></div>
+            <div style="--i: 5" class="white-line"></div>
+            <div style="--i: 6" class="white-line"></div>
+            <div style="--i: 7" class="white-line"></div>
+            <div style="--i: 8" class="white-line"></div>
+          </div>
+        </div>
+        <div id="directive">건너편으로 건너가세요.</div>
+        <div id="char"></div>
+      </div>
+      <div id="screen-game-2" class="screen"></div>
+      <div id="screen-game-3" class="screen"></div>
       <div id="screen-game-end" class="screen"></div>
     </div>
-    <script type="module" src="index.js"></script>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>
