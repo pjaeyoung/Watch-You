@@ -1,0 +1,188 @@
+#screen-game-3 {
+  overflow: hidden;
+}
+
+#screen-game-3 .directive {
+  top: 10px;
+}
+
+#floor {
+  position: absolute;
+  left: 5px;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: url("../assets/images/floor.svg");
+  background-repeat: repeat-y;
+}
+
+#drain {
+  position: absolute;
+  right: 35%;
+  bottom: 28%;
+}
+
+#drain::before {
+  z-index: 2;
+  position: absolute;
+  top: -60px;
+  left: 10px;
+  content: "!";
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 5px 5px;
+  border: 4px solid black;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  opacity: 0;
+  transform: translateY(-10%);
+  -webkit-transform: translateY(-10%);
+  -moz-transform: translateY(-10%);
+  -ms-transform: translateY(-10%);
+  -o-transform: translateY(-10%);
+  transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -ms-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#drain.active::before {
+  opacity: 1;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+
+.cloud {
+  position: absolute;
+  top: calc(var(--h) * 25%);
+  left: calc(var(--v) * 20%);
+  transform: translateX(-400%);
+  animation: flowAni 6s linear infinite;
+  -webkit-animation: flowAni 6s linear infinite;
+  animation-play-state: paused;
+  -webkit-transform: translateX(var(--v) * -1 * 20%);
+  -moz-transform: translateX(-400%);
+  -ms-transform: translateX(-400%);
+  -o-transform: translateX(-400%);
+  -webkit-transform: translateX(-400%);
+}
+
+#screen-game-3.active .cloud {
+  animation-play-state: running;
+}
+
+@keyframes flowAni {
+  to {
+    transform: translateX(400%);
+    -webkit-transform: translateX(400%);
+    -moz-transform: translateX(400%);
+    -ms-transform: translateX(400%);
+    -o-transform: translateX(400%);
+  }
+}
+
+#flag-pole {
+  position: absolute;
+  bottom: 28%;
+  right: 10%;
+}
+
+#flag-pole::before {
+  z-index: 2;
+  position: absolute;
+  top: 75px;
+  left: 25px;
+  content: "!";
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 5px 5px;
+  border: 4px solid black;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  opacity: 0;
+  transform: translateY(-10%);
+  -webkit-transform: translateY(-10%);
+  -moz-transform: translateY(-10%);
+  -ms-transform: translateY(-10%);
+  -o-transform: translateY(-10%);
+  transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -ms-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#flag-pole.active::before {
+  opacity: 1;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+
+#bricks {
+  position: absolute;
+  height: 80px;
+  width: 70px;
+  bottom: 30%;
+  left: 5%;
+}
+
+#bricks > * {
+  position: absolute;
+}
+
+#riddle-brick {
+  left: 24px;
+}
+
+#bricks::before {
+  z-index: 2;
+  position: absolute;
+  top: -60px;
+  left: 25px;
+  content: "!";
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 5px 5px;
+  border: 4px solid black;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  opacity: 0;
+  transform: translateY(-10%);
+  -webkit-transform: translateY(-10%);
+  -moz-transform: translateY(-10%);
+  -ms-transform: translateY(-10%);
+  -o-transform: translateY(-10%);
+  transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -ms-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#bricks.active::before {
+  opacity: 1;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
