@@ -1,6 +1,7 @@
 @import url("./screen-start.css");
 @import url("./screen-game-1.css");
 @import url("./screen-game-2.css");
+@import url("./screen-end.css");
 
 * {
   padding: 0;

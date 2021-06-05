@@ -47,7 +47,7 @@
         <div id="directive">건너편으로 건너가세요.</div>
         <div id="char"></div>
       </div>
-      <div id="screen-game-2" class="screen active">
+      <div id="screen-game-2" class="screen">
         <div class="cd-players">
           <figure class="cd-player">
             <img class="pull-line" src="assets/images/pull_line.svg" />
@@ -65,7 +65,15 @@
         </div>
       </div>
       <div id="screen-game-3" class="screen"></div>
-      <div id="screen-game-end" class="screen"></div>
+      <div id="screen-end" class="screen active">
+        <header>
+          <h1>당신의 행동을<br />분석하다</h1>
+          <figure>
+            <img src="assets/images/face_search.svg" alt="face-search" />
+          </figure>
+        </header>
+        <p id="result-msg"></p>
+      </div>
     </div>
     <script type="module" src="./js/index.js"></script>
   </body>
