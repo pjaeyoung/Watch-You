@@ -37,11 +37,11 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
+  visibility: hidden;
 }
 
 .screen.active {
-  opacity: 1;
+  visibility: visible;
 }
 
 .directive {
