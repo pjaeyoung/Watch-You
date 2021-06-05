@@ -21,11 +21,19 @@
   height: 100px;
 }
 
-#traffic-light.turn-on-red #red-light {
+#traffic-light #red-light {
   fill: red;
 }
 
-#traffic-light.turn-on-green #green-light {
+#traffic-light #green-light {
+  fill: none;
+}
+
+#traffic-light.active #red-light {
+  fill: none;
+}
+
+#traffic-light.active #green-light {
   fill: green;
 }
 
