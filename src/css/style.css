@@ -120,5 +120,6 @@ button {
 }
 
 #screen-game-3.active ~ #player {
+  z-index: 5;
   visibility: visible;
 }
