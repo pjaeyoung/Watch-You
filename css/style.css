@@ -15,6 +15,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
 }
@@ -50,6 +51,10 @@ button {
   color: gray;
   width: 100%;
   text-align: center;
+}
+
+#guide {
+  padding-top: 50px;
 }
 
 #player {
