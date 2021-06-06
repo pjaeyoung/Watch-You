@@ -97,3 +97,71 @@ window.addEventListener("keydown", (e) => {
     walk("right", 2);
   }
 });
+
+// 오디오 재생
+const $audioCalm = document.querySelector("#audio-calm");
+const $audioCreepy = document.querySelector("#audio-creepy");
+const $cdPlayerCalm = document.querySelector("#cd-player-calm");
+const $cdPlayerCreepy = document.querySelector("#cd-player-creepy");
+const $boxCalm = document.querySelector("#box-calm");
+const $boxCreepy = document.querySelector("#box-creepy");
+const $screenGame2Directive = document.querySelector(
+  "#screen-game-2 .directive"
+);
+
+let playedCalm = false;
+let playedCreepy = false;
+
+function makeCdPlayerClickable() {
+  if (playedCreepy && playedCalm) {
+    $boxCalm.classList.add("active");
+    $boxCreepy.classList.add("active");
+    $screenGame2Directive.textContent = "좋아하는 음악을 선택하세요";
+  }
+}
+
+function stopMusic(audio, cdPlayer) {
+  if (!audio.paused) {
+    audio.pause();
+    cdPlayer.classList.remove("active");
+  }
+}
+
+function playOrStopMusic(audio, cdPlayer) {
+  audio.currentTime = 0;
+  audio.paused ? audio.play() : audio.pause();
+  cdPlayer.classList.toggle("active");
+}
+
+document.querySelector("#pull-line-calm").addEventListener("click", () => {
+  stopMusic($audioCreepy, $cdPlayerCreepy);
+  playedCalm = true;
+  makeCdPlayerClickable();
+  playOrStopMusic($audioCalm, $cdPlayerCalm);
+});
+
+document.querySelector("#pull-line-creepy").addEventListener("click", () => {
+  stopMusic($audioCalm, $cdPlayerCalm);
+  playedCreepy = true;
+  makeCdPlayerClickable();
+  playOrStopMusic($audioCreepy, $cdPlayerCreepy);
+});
+
+function pauseMusicAll() {
+  stopMusic($audioCreepy, $cdPlayerCreepy);
+  stopMusic($audioCalm, $cdPlayerCalm);
+}
+
+$boxCalm.addEventListener("click", () => {
+  if (playedCreepy && playedCalm) {
+    pauseMusicAll();
+    switchScreen(document.querySelector("#screen-game-3"));
+  }
+});
+
+$boxCreepy.addEventListener("click", () => {
+  if (playedCreepy && playedCalm) {
+    pauseMusicAll();
+    switchScreen(document.querySelector("#screen-game-3"));
+  }
+});
