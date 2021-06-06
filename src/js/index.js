@@ -1,3 +1,5 @@
+import results from "./result.js";
+
 // 심리테스트 결과
 const testResults = [];
 
@@ -116,6 +118,12 @@ function walk(direction, factor) {
   }
 }
 
+function printTestResult() {
+  document.querySelector("#result-msg").textContent = testResults
+    .map((key) => results[key])
+    .join("");
+}
+
 // player 조종키
 window.addEventListener("keydown", (e) => {
   if (!allowKeydown) return;
@@ -123,6 +131,7 @@ window.addEventListener("keydown", (e) => {
   if ($currentScreen.id === "screen-game-3" && e.key === "q" && !!interactive) {
     testResults.push(interactive);
     switchScreen(document.querySelector("#screen-end"));
+    printTestResult();
   }
 
   if (
