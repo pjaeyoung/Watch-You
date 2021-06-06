@@ -9,9 +9,17 @@
   opacity: 0.2;
 }
 
+#screen-game-2 .directive {
+  top: 130px;
+}
+
+#screen-game-2 audio {
+  visibility: hidden;
+}
+
 .cd-players {
   position: absolute;
-  top: 30%;
+  top: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -19,30 +27,37 @@
 }
 
 .cd-player {
-  z-index: 2;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 150px;
-  height: 150px;
 }
 
 .cd-player img {
   position: absolute;
   width: calc(var(--i) * 100%);
-  height: 100%;
   object-fit: contain;
 }
 
+.cd-player .box {
+  height: 150px;
+}
+
+.box.active:hover {
+  cursor: grabbing;
+  border: 2px solid transparent;
+}
+
 .cd-player .pull-line {
+  height: 150px;
   transform: translateY(80%);
   -webkit-transform: translateY(80%);
   -moz-transform: translateY(80%);
   -ms-transform: translateY(80%);
   -o-transform: translateY(80%);
-  animation: pullAni 0.8s ease-in-out 1;
-  -webkit-animation: pullAni 0.8s ease-in-out 1;
+  animation: pullAni 0.8s ease-in-out infinite;
+  -webkit-animation: pullAni 0.8s ease-in-out infinite;
   animation-play-state: paused;
 }
 
@@ -50,7 +65,7 @@
   cursor: grabbing;
 }
 
-.cd-player .pull-line.active {
+.cd-player.active .pull-line {
   animation-play-state: running;
 }
 
@@ -64,8 +79,8 @@
   }
 }
 
-.cd-player img:last-of-type {
-  top: -4px;
+.cd-player .cd {
+  margin-bottom: 10px;
   animation-name: rotateAni;
   animation-duration: 3s;
   animation-iteration-count: infinite;
@@ -78,11 +93,18 @@
   -o-transform: rotate(0deg);
 }
 
-.cd-player.active img:last-of-type {
+.cd-player.active .cd {
   animation-play-state: running;
 }
 
 @keyframes rotateAni {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
   100% {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -111,8 +133,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: -8px;
-  left: -8px;
+  top: 0;
+  left: 0px;
   border-top: 4px solid rgb(238, 81, 134);
   border-left: 4px solid rgb(238, 81, 134);
 }
@@ -123,7 +145,7 @@
   width: 100%;
   height: 100%;
   bottom: 0;
-  right: -8px;
+  right: 0;
   border-bottom: 4px solid rgb(81, 233, 238);
   border-right: 4px solid rgb(81, 233, 238);
 }
