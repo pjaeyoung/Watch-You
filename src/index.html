@@ -17,6 +17,7 @@
         <button id="btn-start">Start</button>
       </div>
       <div id="screen-game-1" class="screen">
+        <div id="other-side"></div>
         <svg
           id="traffic-light"
           class="turn-on-red"
@@ -44,8 +45,8 @@
             <div style="--i: 8" class="white-line"></div>
           </div>
         </div>
+
         <div class="directive">건너편으로 건너가세요.</div>
-        <div id="char"></div>
       </div>
       <div id="screen-game-2" class="screen">
         <div class="cd-players">
@@ -97,6 +98,28 @@
         </header>
         <p id="result-msg"></p>
       </div>
+      <figure id="player">
+        <img
+          id="ch-face"
+          src="assets/images/ch_face.svg"
+          alt="character's face"
+        />
+        <img
+          id="ch-body"
+          src="assets/images/ch_body.svg"
+          alt="chracter's body"
+        />
+        <img
+          id="ch-left-leg"
+          src="assets/images/ch_left_leg.svg"
+          alt="character's left leg"
+        />
+        <img
+          id="ch-right-leg"
+          src="assets/images/ch_right_leg.svg"
+          alt="character's right leg"
+        />
+      </figure>
     </div>
     <script type="module" src="./js/index.js"></script>
   </body>
