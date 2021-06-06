@@ -23,13 +23,26 @@ const otherSideRect = document
   .querySelector("#other-side")
   .getBoundingClientRect();
 
-function isCollided(target, source) {
+const $drain = document.querySelector("#drain");
+const $bricks = document.querySelector("#bricks");
+const $flagPole = document.querySelector("#flag-pole");
+const drainRect = $drain.getBoundingClientRect();
+const bricksRect = $bricks.getBoundingClientRect();
+const flagPoleRect = $flagPole.getBoundingClientRect();
+
+function isCollidedX(target, source) {
   return (
     source.x + source.width * 0.5 > target.x &&
-    source.x - source.width * 0.5 < target.x + target.width * 0.5 &&
-    source.y > target.y &&
-    source.y < target.y + target.height * 0.5
+    source.x - source.width * 0.5 < target.x + target.width * 0.5
   );
+}
+
+function isCollidedY(target, source) {
+  return source.y > target.y && source.y < target.y + target.height * 0.5;
+}
+
+function isCollided(target, source) {
+  return isCollidedX(target, source) && isCollidedY(target, source);
 }
 
 const $player = document.querySelector("#player");
@@ -39,6 +52,7 @@ $player.style.right = "100px";
 
 let passedCrosswalk = false;
 let allowKeydown = false;
+let interactive = null;
 
 document.querySelector("#btn-start").addEventListener("click", () => {
   switchScreen(document.querySelector("#screen-game-1"));
@@ -50,13 +64,43 @@ document.querySelector("#btn-start").addEventListener("click", () => {
 function walk(direction, factor) {
   const prevValue = $player.style[direction];
   $player.style[direction] = `${parseInt(prevValue) + factor}px`;
+  if (
+    $currentScreen.id === "screen-game-3" &&
+    isCollidedX(drainRect, $player.getBoundingClientRect())
+  ) {
+    $drain.classList.add("active");
+    interactive = "3-C";
+  } else if (
+    $currentScreen.id === "screen-game-3" &&
+    isCollidedX(bricksRect, $player.getBoundingClientRect())
+  ) {
+    $bricks.classList.add("active");
+    interactive = "3-A";
+  } else if (
+    $currentScreen.id === "screen-game-3" &&
+    isCollidedX(flagPoleRect, $player.getBoundingClientRect())
+  ) {
+    $flagPole.classList.add("active");
+    interactive = "3-B";
+  } else {
+    $bricks.classList.remove("active");
+    $drain.classList.remove("active");
+    $flagPole.classList.remove("active");
+    interactive = null;
+  }
 
   // 충돌 체크 - 횡단보도
-  if (isCollided(crosswalkRect, $player.getBoundingClientRect())) {
+  if (
+    $currentScreen.id === "screen-game-1" &&
+    isCollided(crosswalkRect, $player.getBoundingClientRect())
+  ) {
     passedCrosswalk = true;
   }
   // 충돌 체크 - 건너편
-  if (isCollided(otherSideRect, $player.getBoundingClientRect())) {
+  else if (
+    $currentScreen.id === "screen-game-1" &&
+    isCollided(otherSideRect, $player.getBoundingClientRect())
+  ) {
     if (passedCrosswalk && $traffigLight.classList.contains("active")) {
       testResults.push("1-A");
     } else {
@@ -65,6 +109,8 @@ function walk(direction, factor) {
     clearInterval(trafficLightTimer);
     allowKeydown = false;
     setTimeout(() => {
+      $player.style.bottom = "145px";
+      $player.style.right = "170px";
       switchScreen(document.querySelector("#screen-game-2"));
     }, 500);
   }
@@ -73,6 +119,12 @@ function walk(direction, factor) {
 // player 조종키
 window.addEventListener("keydown", (e) => {
   if (!allowKeydown) return;
+
+  if ($currentScreen.id === "screen-game-3" && e.key === "q" && !!interactive) {
+    testResults.push(interactive);
+    switchScreen(document.querySelector("#screen-end"));
+  }
+
   if (
     e.key !== "ArrowUp" &&
     e.key !== "ArrowDown" &&
@@ -85,9 +137,9 @@ window.addEventListener("keydown", (e) => {
 
   $player.classList.add("walk");
 
-  if (e.key === "ArrowUp") {
+  if ($currentScreen.id === "screen-game-1" && e.key === "ArrowUp") {
     walk("bottom", 2);
-  } else if (e.key === "ArrowDown") {
+  } else if ($currentScreen.id === "screen-game-1" && e.key === "ArrowDown") {
     walk("bottom", -2);
   } else if (e.key === "ArrowRight") {
     $player.classList.add("left");
@@ -152,16 +204,22 @@ function pauseMusicAll() {
   stopMusic($audioCalm, $cdPlayerCalm);
 }
 
-$boxCalm.addEventListener("click", () => {
+function switchScreenGame3(cb) {
   if (playedCreepy && playedCalm) {
     pauseMusicAll();
+    cb();
     switchScreen(document.querySelector("#screen-game-3"));
+    allowKeydown = true;
   }
-});
+}
 
+$boxCalm.addEventListener("click", () =>
+  switchScreenGame3(() => {
+    testResults.push("2-A");
+  })
+);
 $boxCreepy.addEventListener("click", () => {
-  if (playedCreepy && playedCalm) {
-    pauseMusicAll();
-    switchScreen(document.querySelector("#screen-game-3"));
-  }
+  switchScreenGame3(() => {
+    testResults.push("2-B");
+  });
 });
